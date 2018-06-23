@@ -1,0 +1,29 @@
+{% extends 'index.html' %}
+{% block content %}
+    <style>
+        tr:hover{
+            color:blue;
+            font-size:20px;
+            width:100%;
+            height: 100%;
+        }
+    </style>
+    <div class="container">
+        <table>
+            <thead>
+                <th>NAME</th>
+                <th>EMAIL</th>
+                <th>COLLEGE</th>
+            </thead>
+            <tbody>
+                {%for data in dataSet%}
+                    <tr>
+                        <td><a href="{% url 'studentDetails' id=data.id %}">{{data.name}}</a></td>
+                        <td>{{ data.email}}</td>
+                        <td>{{ data.college__acronym }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

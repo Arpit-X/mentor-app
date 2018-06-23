@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>The Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body>
+    <style>
+        nav{
+            position: relative;
+            left:90%;
+            display:block;
+        }
+    </style>
+    <nav class="navbar navbar-nav">
+        <a href="{% url 'mentorApp:logOut' %}"><input type="button" value="Log Out"/></a>
+    </nav>
+    {% block content %}
+
+    {% endblock %}
+</body>
+</html>

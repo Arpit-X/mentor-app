@@ -1,0 +1,37 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <style>
+        tr:hover{
+            color:blue;
+            font-size:20px;
+        }
+    </style>
+    <center>
+        {% if 'onlineapp.add_college' in user_permissions %}
+            <a href="{% url 'mentorApp:addCollegeForm' %}"><input type="button" value="+ ADD COLLEGE"/></a>
+        {% endif %}
+        <table>
+            <thead>
+                <th>College</th>
+                <th>Acronym</th>
+            </thead>
+            <tbody>
+                {% for data in dataSet %}
+                    <tr>
+                        <td><a href="{% url 'mentorApp:college_wise_student_list' data.id %}">{{data.name}}</a></td>
+                        <td>{{ data.acronym}}</td>
+                        <td>
+                            {% if 'onlineapp.change_college' in user_permissions %}
+                                <a href="{% url 'mentorApp:EditCollege' data.id %}">edit</a>
+                            {% endif %}
+                            {%  if 'onlineapp.delete_college' in user_permissions %}
+                                <a href="{% url 'mentorApp:DeleteCollege' data.id %}">Delete</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </center>
+{% endblock %}

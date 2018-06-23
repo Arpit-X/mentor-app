@@ -1,0 +1,42 @@
+{% extends 'index.html' %}
+{% block content %}
+    <style>
+        tr:hover{
+            color:blue;
+            font-size:20px;
+        }
+        th{
+            padding:2px 1em;
+        }
+    </style>
+
+    <div class="container">
+        <h1>{{ heading }}</h1>
+        {% if 'onlineapp.add_student' in user_permissions %}
+            <a href="{% url 'mentorApp:AddStudent' id=collegeId %}"><input type="button" value="+ ADD"/></a>
+        {% endif %}
+    <table>
+        <thead>
+            <th>STUDENT</th>
+            <th>PROBLEM 1</th>
+            <th>PROBLEM 2</th>
+            <th>PROBLEM 3</th>
+            <th>PROBLEM 4</th>
+            <th>TOTAL</th>
+        </thead>
+        <tbody>
+                {% for data in dataSet %}
+                    <tr>
+                        <td>{{ data.name }}</td>
+                        <td>{{ data.mocktest1.problem1 }}</td>
+                        <td>{{ data.mocktest1.problem2 }}</td>
+                        <td>{{ data.mocktest1.problem3 }}</td>
+                        <td>{{ data.mocktest1.problem4 }}</td>
+                        <td>{{ data.mocktest1.total }}</td>
+                        <td><a href="{% url 'mentorApp:UpdateStudent' data.id %}">edit</a> <a href="{% url 'mentorApp:DeleteStudent' data.id %}">delete</a></td>
+                    </tr>
+                {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}

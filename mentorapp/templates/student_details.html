@@ -1,0 +1,22 @@
+{% extends 'index.html' %}
+{% block content %}
+    <style>
+        span{
+            color: #0c0cff;
+            display:inline-grid;
+        }
+    </style>
+
+        <div class="container">
+        <h1><span>NAME: </span>{{ dataSet.name }}</h1>
+        <p><span>DOB: </span>{{ dataSet.dob }}</p>
+        <p><span>EMAIL: </span>{{dataSet.email  }}</p>
+        <p><span>DB_FOLDER: </span>{{ dataSet.db_folder }}</p>
+        <p><span>COLLEGE: </span>{{ dataSet.college.name }}</p>
+        {% if data.dropped_out %}
+            <p>Dropped Out</p>
+        {% endif %}
+
+        </div>
+
+{% endblock %}

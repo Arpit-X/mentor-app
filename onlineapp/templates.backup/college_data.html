@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College data</title>
+</head>
+<style>
+    tr:hover{
+        color:blue;
+        font-size:20px;
+    }
+</style>
+<body>
+    <table>
+        <thead>
+            <th>College</th>
+            <th>Acronym</th>
+        </thead>
+        <tbody>
+            {%for data in dataSet%}
+                <tr>
+                    <td><a href="{% url 'collegeWiseStudentList' acronym=data.acronym%}">{{data.name}}</a></td>
+                    <td>{{ data.acronym}}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

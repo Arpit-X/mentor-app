@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>College</title>
+</head>
+<style>
+    tr:hover{
+        color:blue;
+        font-size:20px;
+    }
+</style>
+<body>
+
+    <table>
+        <thead>
+            <th>STUDENT</th>
+            <th>PROBLEM 1</th>
+            <th>PROBLEM 2</th>
+            <th>PROBLEM 3</th>
+            <th>PROBLEM 4</th>
+            <th>TOTAL</th>
+        </thead>
+        <tbody>
+                {% for data in dataSet %}
+                    <tr>
+                        <td><a href="{% url 'studentDetails' id=data.student.id %}">{{ data.student.name }}</a></td>
+                        <td>{{ data.problem1 }}</td>
+                        <td>{{ data.problem2 }}</td>
+                        <td>{{ data.problem3 }}</td>
+                        <td>{{ data.problem4 }}</td>
+                        <td>{{ data.total }}</td>
+                    </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
